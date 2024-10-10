@@ -1,0 +1,48 @@
+/* Stylesheet for pizza.html*/
+img {
+    float: right; /* moving logo to right */
+}
+body {
+    font-family: Arial, sans-serif; 
+    background-color: #ffffff;  /*color of background*/
+    margin: 0;
+    padding: 0;
+}
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+select,
+textarea {
+    padding: 10px;  /*how i want the quest boxes to look color how long wide and how space from the text box also the radious I don't know how to explain it but it's basically about how circular it is */
+    margin-top: 5px;
+    border: 1px solid #000000;
+    border-radius: 10px;                     
+    box-sizing: border-box;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    margin-right: 10px; /* styles check boxes*/
+}
+
+button {
+    padding: 10px; /*styles the place order button*/
+    margin-top: 20px;
+    background-color: #1a04dd;
+    color: #0bd32d;
+    border-radius: 20px;
+    cursor: pointer; /*changes cursor when over button */
+}
+
+button:hover {
+    background-color: #f50d21; /*hover color for the place orderbutton*/
+}

@@ -1,0 +1,86 @@
+<!-- 
+joseph gorgees 
+monday october 7 2024
+pizza ordering website
+-->
+<!DOCTYPE html>  <!-- declaring the doc type -->
+<html lang="en"></html><!-- setting the language -->
+<head>
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizza Order Form</title>
+    <link rel="stylesheet" href="styles.css"> <!-- linking the css --> 
+</head>
+<body>
+    <header>
+        <img src="pizza-logo.png.jpg" alt="logo man holding a pizza" width="100" height="100">
+        <h1>Welcome to josephs Pizza Shop</h1>
+    </header>
+    <main>
+        <section>
+            <h2>Order Your Pizza</h2>
+            <form id="pizzaOrderForm">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required><br>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required><br>
+
+                <label for="quantity">How many pizzas?</label>
+                <input type="number" id="quantity" name="quantity" min="1" required><br>
+
+                <label for="size">What size is the pizza?</label>
+                <select id="size" name="size" required>
+                    <option value="small">Small</option>
+                    <option value="medium">Medium</option>
+                    <option value="large">Large</option>
+                </select><br>
+
+                <fieldset>
+                    <legend>Choose your toppings:</legend>
+                    <label><input type="checkbox" name="toppings" value="pepperoni"> Pepperoni</label><br><!-- adding check boxes for the toppings -->
+                    <label><input type="checkbox" name="toppings" value="mushrooms"> Mushrooms</label><br> 
+                    <label><input type="checkbox" name="toppings" value="onions"> Onions</label><br>
+                    <label><input type="checkbox" name="toppings" value="sausage"> Sausage</label><br>
+                    <label><input type="checkbox" name="toppings" value="bacon"> Bacon</label><br>
+                    <label><input type="checkbox" name="toppings" value="extra_cheese"> Extra Cheese</label><br>
+                    <label><input type="checkbox" name="toppings" value="black_olives"> Black Olives</label><br>
+                    <label><input type="checkbox" name="toppings" value="green_peppers"> Green Peppers</label><br>
+                    <label><input type="checkbox" name="toppings" value="pineapple"> Pineapple</label><br>
+                    <label><input type="checkbox" name="toppings" value="spinach"> Spinach</label><br>
+                </fieldset>
+
+                <button type="submit">Place Order</button>
+            </form>
+        </section>
+        <section id="orderConfirmation" style="display:none;">
+            <h2>Order Confirmation</h2>
+            <p id="confirmationMessage"></p> 
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 josephs Pizza Shop</p>
+    </footer>
+
+    <script>
+        document.getElementById('pizzaOrderForm').addEventListener('submit', function(event) {  // adding js with script tag for the 
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;  
+            const quantity = document.getElementById('quantity').value; 
+            const size = document.getElementById('size').value; 
+            const toppings = Array.from(document.querySelectorAll('input[name="toppings"]:checked')).map(el => el.value);           // adding all the values/ name email quantity size and toppings 
+            
+            const confirmationMessage = ` 
+                Thank you, ${name}!<br>
+                Your order for ${quantity} ${size} pizza(s) with the following toppings has been placed:<br>        
+                ${toppings.join(', ')}<br> 
+                A confirmation email will be sent to ${email}.                                                
+            `;                                                                                              // adding the confirmation message 
+            document.getElementById('confirmationMessage').innerHTML = confirmationMessage;
+            document.getElementById('orderConfirmation').style.display = 'block';
+        });
+    </script>
+    
+</body>
+</html>
